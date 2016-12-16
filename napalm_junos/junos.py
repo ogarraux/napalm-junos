@@ -69,8 +69,9 @@ class JunOSDriver(NetworkDriver):
             optional_args = {}
         self.port = optional_args.get('port', 22)
         self.config_lock = optional_args.get('config_lock', True)
+        self.ssh_config = optional_args.get('ssh_config', None)
 
-        self.device = Device(hostname, user=username, password=password, port=self.port)
+        self.device = Device(hostname, user=username, password=password, port=self.port, ssh_config=self.ssh_config)
 
     def open(self):
         """Open the connection wit the device."""
